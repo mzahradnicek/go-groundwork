@@ -35,5 +35,5 @@ func GetConnection(name ...string) *Connection {
 		n = name[0]
 	}
 
-	return p[n]
+	return pool[n]
 }

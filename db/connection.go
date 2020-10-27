@@ -27,7 +27,7 @@ func (c *Connection) GetDB() *sqlx.DB {
 	return nil
 }
 
-func (c *Connection) GetTx(*sqlx.Tx) {
+func (c *Connection) GetTx() *sqlx.Tx {
 	if v, ok := c.db.(*sqlx.Tx); ok {
 		return v
 	}
@@ -226,7 +226,7 @@ func (c *Connection) Rollback() error {
 	return nil
 }
 
-func Commit() error {
+func (c *Connection) Commit() error {
 	if tx, ok := c.db.(*sqlx.Tx); ok && !c.nestedTransaction {
 		return tx.Commit()
 	}
