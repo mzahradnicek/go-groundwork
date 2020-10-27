@@ -1,8 +1,6 @@
 package db
 
 import (
-	"context"
-
 	sqlg "github.com/mzahradnicek/sql-glue"
 )
 
