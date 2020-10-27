@@ -1,8 +1,6 @@
 package db
 
 import (
-	. "alcrm/common"
-
 	"context"
 
 	sqlg "github.com/mzahradnicek/sql-glue"
