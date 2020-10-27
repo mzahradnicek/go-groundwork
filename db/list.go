@@ -11,14 +11,14 @@ type List struct {
 	Limit  int `json:"limit"`
 	Offset int `json:"offset"`
 
-	store DbQuerier
+	store *Connection
 
 	opt   *QueryOptions
 	where sqlg.Qg
 }
 
-func (l *List) SetStore(dbh DbQuerier) {
-	l.store = dbh
+func (l *List) SetConnection(conn *Connection) {
+	l.store = conn
 }
 
 func (l *List) QueryGlue(q sqlg.Qg) {

@@ -1,8 +1,6 @@
 package db
 
 import (
-	. "alcrm/common"
-
 	"context"
 
 	"github.com/jmoiron/sqlx"
@@ -14,7 +12,4 @@ type Model struct {
 
 func (m *Model) SetConnection(conn *Connection) {
 	m.store = conn
-	if m.ctx != nil {
-		m.store = conn.WithContext(m.ctx)
-	}
 }

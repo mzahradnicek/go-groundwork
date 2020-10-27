@@ -6,8 +6,8 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/mzahradnicek/go-groundwork/utils"
 	sqlg "github.com/mzahradnicek/sql-glue"
+	"go-groundwork/utils"
 )
 
 var (
