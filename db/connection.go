@@ -17,7 +17,7 @@ type Connection struct {
 }
 
 func (c *Connection) WithContext(ctx context.Context) *Connection {
-	return &Connection{db: db, sqlg: c.sqlg, ctx: ctx, nestedTransaction: c.nestedTransaction}
+	return &Connection{db: c.db, sqlg: c.sqlg, ctx: ctx, nestedTransaction: c.nestedTransaction}
 }
 
 func (c *Connection) GetDB() *sqlx.DB {
