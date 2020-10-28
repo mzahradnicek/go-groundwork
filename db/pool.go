@@ -24,6 +24,9 @@ func NewConnection(ident, dbtype, connString string, sqlgConfig *sqlg.Config) (e
 		c.sqlg = sqlgConfig
 	}
 
+	if pool == nil {
+		pool = make(map[string]*Connection)
+	}
 	pool[ident] = c
 
 	return
