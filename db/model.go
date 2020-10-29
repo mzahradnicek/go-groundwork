@@ -1,9 +1,13 @@
 package db
 
 type Model struct {
-	store *Connection
+	conn *Connection
 }
 
 func (m *Model) SetConnection(conn *Connection) {
-	m.store = conn
+	m.conn = conn
+}
+
+func NewModel(conn *Connection) *Model {
+	return &Model{conn: conn}
 }

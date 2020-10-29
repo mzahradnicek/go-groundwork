@@ -211,11 +211,11 @@ func (c *Connection) Begin() (*Connection, error) {
 			return nil, err
 		}
 
-		return &Connection{db: tx, sqlg: c.sqlg}, nil
+		return &Connection{db: tx, sqlg: c.sqlg, ctx: c.ctx}, nil
 	}
 
 	// we already have transaction sqlx.Tx
-	return &Connection{db: c.db, sqlg: c.sqlg, nestedTransaction: true}, nil
+	return &Connection{db: c.db, sqlg: c.sqlg, ctx: c.ctx, nestedTransaction: true}, nil
 }
 
 func (c *Connection) Rollback() error {

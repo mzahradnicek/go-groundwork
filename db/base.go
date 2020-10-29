@@ -3,9 +3,14 @@ package db
 import (
 	"context"
 	"database/sql"
+	"errors"
 	"strings"
 
 	"github.com/jmoiron/sqlx"
+)
+
+var (
+	ErrNoConnection = errors.New("No connection set")
 )
 
 type DbQuerier interface {

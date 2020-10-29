@@ -9,20 +9,28 @@ type List struct {
 	Limit  int `json:"limit"`
 	Offset int `json:"offset"`
 
-	store *Connection
+	conn *Connection
 
-	opt   *QueryOptions
-	where sqlg.Qg
+	opt *QueryOptions
 }
 
 func (l *List) SetConnection(conn *Connection) {
-	l.store = conn
+	l.conn = conn
 }
 
-func (l *List) QueryGlue(q sqlg.Qg) {
-	l.where = q
+func (l *List) QueryOptions(opt *QueryOptions) {
+	l.opt = opt
 }
 
-func (l *List) QueryOptions(opt QueryOptions) {
-	l.opt = &opt
+func (l *List) ApplyQueryOptions(q *sqlg.Qg) {
+	if l.opt != nil {
+		l.opt.ApplyToQuery(q)
+
+		l.Limit = l.opt.Limit
+		l.Offset = l.opt.Offset
+	}
+}
+
+func NewList(conn *Connection) *List {
+	return &List{conn: conn}
 }
