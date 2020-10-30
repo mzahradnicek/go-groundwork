@@ -18,6 +18,10 @@ func (l *List) SetConnection(conn *Connection) {
 	l.conn = conn
 }
 
+func (l *List) Conn() *Connection {
+	return l.conn
+}
+
 func (l *List) QueryOptions(opt *QueryOptions) {
 	l.opt = opt
 }
