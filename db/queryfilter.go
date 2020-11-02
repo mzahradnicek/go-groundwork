@@ -7,7 +7,8 @@ import (
 )
 
 var (
-	ErrEmptyQueryFilter = errors.New("Query filter is empty")
+	ErrEmptyQueryFilter      = errors.New("Query filter is empty")
+	ErrMissingRequiredFilter = errors.New("Missing required filter field")
 )
 
 type QueryFilter map[string]interface{}
