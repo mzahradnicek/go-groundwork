@@ -7,4 +7,5 @@ var (
 	ErrMissingRequiredFilter = errors.New("Required fields are not set")
 	ErrModelNotLoaded        = errors.New("Model was not initialized")
 	ErrCreateTransaction     = errors.New("Transaction cant be created")
+	ErrEmptyQueryFilter      = errors.New("Query filter is empty")
 )
