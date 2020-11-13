@@ -9,10 +9,6 @@ import (
 	"github.com/jmoiron/sqlx"
 )
 
-var (
-	ErrNoConnection = errors.New("No connection set")
-)
-
 type DbQuerier interface {
 	Get(dest interface{}, query string, args ...interface{}) error
 	GetContext(ctx context.Context, dest interface{}, query string, args ...interface{}) error
