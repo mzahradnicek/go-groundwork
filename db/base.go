@@ -3,7 +3,6 @@ package db
 import (
 	"context"
 	"database/sql"
-	"errors"
 	"strings"
 
 	"github.com/jmoiron/sqlx"
