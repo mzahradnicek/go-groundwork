@@ -10,7 +10,7 @@ import (
 
 type Connection struct {
 	db   DbQuerier
-	sqlg *sqlg.Config
+	sqlg *sqlg.Builder
 	ctx  context.Context
 
 	nestedTransaction bool

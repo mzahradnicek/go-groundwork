@@ -7,7 +7,7 @@ import (
 
 var pool map[string]*Connection
 
-func NewConnection(ident, dbtype, connString string, sqlgConfig *sqlg.Config) (err error) {
+func NewConnection(ident, dbtype, connString string, sqlgBuilder *sqlg.Builder) (err error) {
 	if ident == "" {
 		ident = "default"
 	}
@@ -20,8 +20,8 @@ func NewConnection(ident, dbtype, connString string, sqlgConfig *sqlg.Config) (e
 		return
 	}
 
-	if sqlgConfig != nil {
-		c.sqlg = sqlgConfig
+	if sqlgBuilder != nil {
+		c.sqlg = sqlgBuilder
 	}
 
 	if pool == nil {

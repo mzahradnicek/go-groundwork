@@ -9,3 +9,5 @@ github.com/mzahradnicek/log v0.0.0-20200229162407-549fe599de21 h1:6NEBKfhpuAbpQr
 github.com/mzahradnicek/log v0.0.0-20200229162407-549fe599de21/go.mod h1:taFuf4K9IwO+Cssri2aGQqCxEQUhiqMxlKkAn84e+bg=
 github.com/mzahradnicek/sql-glue v0.0.0-20191119195115-dd537bf71217 h1:K6UlmpfmIrjmMY2mNm1DHB8A+RrJbbc6+6nY25mxjoA=
 github.com/mzahradnicek/sql-glue v0.0.0-20191119195115-dd537bf71217/go.mod h1:ay9AZ+23fcOlX8Q5eTNDRTCGqR9ub5zdE7wL//AxnSE=
+github.com/mzahradnicek/sql-glue v0.0.0-20210314205212-575bbb73ca8c h1:4/FHTVAoaTOm5K8T4poEhSUpisARPhFuA/SMHDQ3Cj0=
+github.com/mzahradnicek/sql-glue v0.0.0-20210314205212-575bbb73ca8c/go.mod h1:ay9AZ+23fcOlX8Q5eTNDRTCGqR9ub5zdE7wL//AxnSE=
