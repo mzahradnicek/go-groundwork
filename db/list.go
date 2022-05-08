@@ -11,22 +11,31 @@ type List struct {
 
 	conn *Connection
 
-	opt *QueryOptions
+	opt   *QueryOptions
+	where *sqlg.Qg
 }
 
 func (l *List) SetConnection(conn *Connection) {
 	l.conn = conn
 }
 
-func (l *List) Conn() *Connection {
+func (l List) Conn() *Connection {
 	return l.conn
 }
 
-func (l *List) QueryOptions(opt *QueryOptions) {
-	l.opt = opt
+func (l *List) SetWhere(qg sqlg.Qg) {
+	l.where = &qg
 }
 
-func (l *List) ApplyQueryOptions(q *sqlg.Qg) {
+func (l List) GetWhere() sqlg.Qg {
+	return *l.where
+}
+
+func (l *List) QueryOptions(opt QueryOptions) {
+	l.opt = &opt
+}
+
+func (l List) ApplyQueryOptions(q *sqlg.Qg) {
 	if l.opt != nil {
 		l.opt.ApplyToQuery(q)
 
