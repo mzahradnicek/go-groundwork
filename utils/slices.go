@@ -1,8 +1,8 @@
 package utils
 
-func SliceInt64Unique(input []int64) []int64 {
-	u := make([]int64, 0, len(input))
-	m := make(map[int64]bool)
+func SliceUnique[T comparable](input []T) []T {
+	u := make([]T, 0, len(input))
+	m := make(map[T]bool)
 
 	for _, val := range input {
 		if _, ok := m[val]; !ok {
@@ -14,7 +14,7 @@ func SliceInt64Unique(input []int64) []int64 {
 	return u
 }
 
-func SliceStringContains(a []string, s string) bool {
+func SliceContains[T comparable](a []T, s T) bool {
 	for _, v := range a {
 		if v == s {
 			return true

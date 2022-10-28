@@ -1,6 +1,6 @@
 module github.com/mzahradnicek/go-groundwork
 
-go 1.13
+go 1.18
 
 require (
 	github.com/jmoiron/sqlx v1.2.0
