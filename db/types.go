@@ -11,6 +11,11 @@ import (
 	"github.com/lib/pq"
 )
 
+var (
+	ErrTypeAssertionArrayByte          = errors.New("Type assertion .([]byte) failed.")
+	ErrTypeAssertionMapStringInterface = errors.New("Type assertion .(map[string]interface{}) failed.")
+)
+
 type NullBool struct {
 	sql.NullBool
 }
@@ -204,7 +209,7 @@ func (b JsonB) Value() (driver.Value, error) {
 func (b *JsonB) Scan(src interface{}) error {
 	source, ok := src.([]byte)
 	if !ok {
-		return errors.New("Type assertion .([]byte) failed.")
+		return ErrTypeAssertionArrayByte
 	}
 
 	var i interface{}
@@ -215,7 +220,7 @@ func (b *JsonB) Scan(src interface{}) error {
 
 	*b, ok = i.(map[string]interface{})
 	if !ok {
-		return errors.New("Type assertion .(map[string]interface{}) failed.")
+		return ErrTypeAssertionMapStringInterface
 	}
 
 	return nil

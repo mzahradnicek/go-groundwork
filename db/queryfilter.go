@@ -6,13 +6,15 @@ import (
 	"reflect"
 )
 
+var ErrInputIsNotMap = errors.New("Input is not map type")
+
 type QueryFilter map[string]interface{}
 
 func (qf QueryFilter) GetFromMap(data interface{}, Allowed []string) error {
 	rData := reflect.ValueOf(data)
 
 	if rData.Kind() != reflect.Map {
-		return errors.New("Input is not map type")
+		return ErrInputIsNotMap
 	}
 
 	for _, key := range rData.MapKeys() {
