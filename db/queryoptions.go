@@ -53,7 +53,7 @@ func (qOpts *QueryOptions) GetFromURLQuery(m url.Values) {
 	if v, ok := m["sort"]; ok {
 		for _, o := range v {
 			s := strings.Split(o, ":")
-			if !utils.SliceStringContains(qOpts.SortAllow, s[0]) {
+			if !utils.SliceContains(qOpts.SortAllow, s[0]) {
 				continue
 			}
 
