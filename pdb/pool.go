@@ -4,6 +4,8 @@ import (
 	"context"
 	"errors"
 
+	pgxdecimal "github.com/jackc/pgx-shopspring-decimal"
+	"github.com/jackc/pgx/v5"
 	"github.com/jackc/pgx/v5/pgxpool"
 	sqlg "github.com/mzahradnicek/sql-glue"
 )
@@ -13,7 +15,17 @@ var pool = make(map[string]*Connection)
 var ErrDbIsNil = errors.New("Database identifier is nil")
 
 func NewConnection(ident, connString string, sqlgBuilder *sqlg.Builder) error {
-	db, err := pgxpool.New(context.Background(), connString)
+	config, err := pgxpool.ParseConfig(connString)
+	if err != nil {
+		return err
+	}
+
+	config.AfterConnect = func(ctx context.Context, conn *pgx.Conn) error {
+		pgxdecimal.Register(conn.TypeMap())
+		return nil
+	}
+
+	db, err := pgxpool.NewWithConfig(context.Background(), config)
 
 	if err != nil {
 		return err
