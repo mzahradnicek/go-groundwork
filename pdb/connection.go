@@ -103,7 +103,7 @@ func (c *Connection) GlueSelect(ctx context.Context, q *sqlg.Qg, dst interface{}
 		err = log.NewError(err).AddFields(log.Fields{"sql": sql, "args": args})
 	}
 
-	return nil
+	return err
 }
 
 func (c *Connection) GlueSelectLog(ctx context.Context, q *sqlg.Qg, dst interface{}) error {
@@ -120,7 +120,7 @@ func (c *Connection) GlueSelectLog(ctx context.Context, q *sqlg.Qg, dst interfac
 
 	log.Save(log.NewInfo("Log query").AddFields(log.Fields{"sql": sql, "args": args}))
 
-	return nil
+	return err
 }
 
 func (c *Connection) GlueGet(ctx context.Context, q *sqlg.Qg, dst interface{}) error {
@@ -135,7 +135,7 @@ func (c *Connection) GlueGet(ctx context.Context, q *sqlg.Qg, dst interface{}) e
 		err = log.NewError(err).AddFields(log.Fields{"sql": sql, "args": args})
 	}
 
-	return nil
+	return err
 }
 
 func (c *Connection) GlueGetLog(ctx context.Context, q *sqlg.Qg, dst interface{}) error {
@@ -152,7 +152,7 @@ func (c *Connection) GlueGetLog(ctx context.Context, q *sqlg.Qg, dst interface{}
 
 	log.Save(log.NewInfo("Log query").AddFields(log.Fields{"sql": sql, "args": args}))
 
-	return nil
+	return err
 }
 
 /* Transaction helpers */
