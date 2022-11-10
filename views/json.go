@@ -13,6 +13,7 @@ func Json(w http.ResponseWriter, data any) error {
 }
 
 func JsonStatus(w http.ResponseWriter, data any, code int) {
+	w.Header().Set("Content-type", "application/json; charset=utf-8")
 	w.WriteHeader(code)
 	Json(w, data)
 }
