@@ -1,9 +1,5 @@
 package pdb
 
-import "errors"
-
-var ErrModelNotLoaded = errors.New("Model not loaded")
-
 type Model struct {
 	conn *Connection
 }
