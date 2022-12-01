@@ -17,6 +17,10 @@ var (
 	ErrNoCommit   = errors.New("Can't call Commit on connection")
 )
 
+type TxBeginer interface {
+	Begin(context.Context) (pgx.Tx, error)
+}
+
 type Connection struct {
 	db   Querier
 	sqlg *sqlg.Builder
@@ -157,7 +161,7 @@ func (c *Connection) GlueGetLog(ctx context.Context, q *sqlg.Qg, dst interface{}
 
 /* Transaction helpers */
 func (c *Connection) Begin(ctx context.Context) (*Connection, error) {
-	if v, ok := c.db.(pgx.Tx); ok {
+	if v, ok := c.db.(TxBeginer); ok {
 		tx, err := v.Begin(ctx)
 		if err != nil {
 			return nil, err
