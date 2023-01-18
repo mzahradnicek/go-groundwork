@@ -23,12 +23,12 @@ func (l List) Conn() *Connection {
 	return l.conn
 }
 
-func (l *List) SetWhere(qg sqlg.Qg) {
-	l.where = &qg
+func (l *List) SetWhere(qg *sqlg.Qg) {
+	l.where = qg
 }
 
-func (l List) GetWhere() sqlg.Qg {
-	return *l.where
+func (l List) GetWhere() *sqlg.Qg {
+	return l.where
 }
 
 func (l *List) QueryOptions(opt QueryOptions) {
