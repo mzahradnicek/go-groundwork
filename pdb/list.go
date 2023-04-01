@@ -11,8 +11,10 @@ type List struct {
 
 	conn *Connection
 
-	opt   *QueryOptions
-	where *sqlg.Qg
+	opt    *QueryOptions
+	params QueryParams
+	where  *sqlg.Qg // DEPRECATED
+	filter sqlg.Qg
 }
 
 func (l *List) SetConnection(conn *Connection) {
@@ -23,10 +25,28 @@ func (l List) Conn() *Connection {
 	return l.conn
 }
 
+func (l *List) SetFilter(qg sqlg.Qg) {
+	l.filter = qg
+}
+
+func (l List) GetFilter() sqlg.Qg {
+	return l.filter
+}
+
+func (l *List) SetParams(p QueryParams) {
+	l.params = p
+}
+
+func (l List) GetParams() QueryParams {
+	return l.params
+}
+
+// DEPRECATED
 func (l *List) SetWhere(qg *sqlg.Qg) {
 	l.where = qg
 }
 
+// DEPRECATED
 func (l List) GetWhere() *sqlg.Qg {
 	return l.where
 }
@@ -45,5 +65,7 @@ func (l List) ApplyQueryOptions(q *sqlg.Qg) {
 }
 
 func NewList(conn *Connection) *List {
-	return &List{conn: conn}
+	res := &List{conn: conn}
+	res.params = make(QueryParams)
+	return res
 }
