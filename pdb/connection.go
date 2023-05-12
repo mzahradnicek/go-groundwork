@@ -7,6 +7,7 @@ import (
 	"github.com/georgysavva/scany/v2/pgxscan"
 	"github.com/jackc/pgx/v5"
 	"github.com/jackc/pgx/v5/pgconn"
+	"github.com/jackc/pgx/v5/pgxpool"
 	"github.com/mzahradnicek/log"
 	sqlg "github.com/mzahradnicek/sql-glue"
 )
@@ -28,6 +29,14 @@ type Connection struct {
 
 func (c *Connection) GetDB() Querier {
 	return c.db
+}
+
+func (c *Connection) Acquire(ctx context.Context) (*pgxpool.Conn, error) {
+	if v, ok := c.db.(*pgxpool.Pool); ok {
+		return v.Acquire(ctx)
+	}
+
+	return nil, errors.New("For Acquire connection must be from *pgxpool.Pool")
 }
 
 /* SQL Glue Helpers */
