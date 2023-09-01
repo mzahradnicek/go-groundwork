@@ -3,7 +3,7 @@ module github.com/mzahradnicek/go-groundwork
 go 1.18
 
 require (
-	github.com/blockloop/scan/v2 v2.4.0
+	github.com/blockloop/scan/v2 v2.5.0
 	github.com/georgysavva/scany/v2 v2.0.0
 	github.com/jackc/pgx-shopspring-decimal v0.0.0-20220624020537-1d36b5a1853e
 	github.com/jackc/pgx/v5 v5.0.4
